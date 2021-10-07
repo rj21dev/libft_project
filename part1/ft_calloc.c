@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 19:50:11 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/07 19:50:18 by rjada            ###   ########.fr       */
+/*   Created: 2021/10/07 19:32:01 by rjada             #+#    #+#             */
+/*   Updated: 2021/10/07 21:38:56 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c - 'A' + 'a');
-	return (c);
+	void	*area;
+	size_t	i;
+	size_t	total;
+
+	total = count * size;
+	area = malloc(total);
+	if (!area)
+		return (NULL);
+	i = 0;
+	while (i < total)
+		((unsigned char *)area)[i++] = 0;
+	return (area);
 }

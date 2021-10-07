@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 19:50:11 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/07 19:50:18 by rjada            ###   ########.fr       */
+/*   Created: 2021/10/07 19:49:34 by rjada             #+#    #+#             */
+/*   Updated: 2021/10/07 19:49:38 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c - 'A' + 'a');
-	return (c);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		++i;
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return (&((char *)s)[i]);
+		--i;
+	}
+	return (NULL);
 }
