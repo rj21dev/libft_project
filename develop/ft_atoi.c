@@ -6,25 +6,13 @@
 /*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:30:31 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/07 22:08:29 by rjada            ###   ########.fr       */
+/*   Updated: 2021/10/09 17:19:33 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_extreme(int res, unsigned long long extreme, int sign)
-{
-	unsigned long long	min;
-	unsigned long long	max;
-
-	min = 9223372036854775808U;
-	max = 9223372036854775807U;
-	if (extreme > max && sign == 1)
-		return (-1);
-	if (extreme > min && sign == -1)
-		return (0);
-	return (res * sign);
-}
+static int	ft_extreme(int res, unsigned long long extreme, int sign);
 
 int	ft_atoi(const char *str)
 {
@@ -53,4 +41,18 @@ int	ft_atoi(const char *str)
 		++i;
 	}
 	return (ft_extreme(res, extreme, sign));
+}
+
+static int	ft_extreme(int res, unsigned long long extreme, int sign)
+{
+	unsigned long long	min;
+	unsigned long long	max;
+
+	min = 9223372036854775808UL;
+	max = 9223372036854775807UL;
+	if (extreme > max && sign == 1)
+		return (-1);
+	if (extreme > min && sign == -1)
+		return (0);
+	return (res * sign);
 }
