@@ -29,8 +29,21 @@ SRCS	= ft_atoi.c \
 				ft_itoa.c \
 				ft_strjoin.c \
 				ft_substr.c \
-				ft_strmapi.c
-OBJS	= ${SRCS:.c=.o}
+				ft_strmapi.c \
+				ft_strtrim.c \
+				ft_split.c \
+				ft_striteri.c
+SRCS_B	= ft_lstadd_back.c \
+				ft_lstadd_front.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstiter.c \
+				ft_lstlast.c \
+				ft_lstmap.c \
+				ft_lstnew.c \
+				ft_lstsize.c
+OBJS	= $(SRCS:.c=.o)
+OBJS_B	= $(SRCS_B:.c=.o)
 INCS	= .
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
@@ -38,20 +51,23 @@ LIBC	= ar -rcs
 RM		= rm -f
 
 .c.o :
-		${CC} ${FLAGS} -I${INCS} -c $< -o ${<:.c=.o}
+		$(CC) $(FLAGS) -I$(INCS) -c $< -o $(<:.c=.o)
 
-${NAME}: ${OBJS}
-		${LIBC} ${NAME} ${OBJS}
+$(NAME): $(OBJS)
+		$(LIBC) $(NAME) $(OBJS)
 
-all: ${NAME}
+all: $(NAME)
+
+bonus: $(NAME) $(OBJS_B)
+		$(LIBC) $(NAME) $(OBJS_B)
 
 clean:
-		${RM} ${OBJS}
+		$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 
 re: fclean all
 
 .PHONY:
-		all clean fclean re
+		all bonus clean fclean re
