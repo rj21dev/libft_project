@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 static int	ft_extreme(int res, unsigned long long extreme, int sign);
 
 int	ft_atoi(const char *str)
