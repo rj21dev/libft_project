@@ -42,30 +42,30 @@ SRCS_B	= ft_lstadd_back.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
 				ft_lstsize.c
+HDR		= libft.h
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
-INCS	= .
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
-LIBC	= ar -rcs
+LINK	= ar -rcs
 RM		= rm -f
 
 .c.o :
-		$(CC) $(FLAGS) -I$(INCS) -c $< -o $(<:.c=.o)
+		$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME): $(OBJS)
-		$(LIBC) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(HDR)
+		$(LINK) $(NAME) $(OBJS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(OBJS_B)
-		$(LIBC) $(NAME) $(OBJS_B)
+bonus: 
+		@make OBJS="$(OBJS_B)" $(NAME)
 
 clean:
-		$(RM) $(OBJS) $(OBJS_B)
+		@$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all
 
