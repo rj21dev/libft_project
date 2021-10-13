@@ -42,7 +42,7 @@ SRCS_B	= ft_lstadd_back.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
 				ft_lstsize.c
-HDR		= libft.h
+HDRS	= *.h
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
 CC		= gcc
@@ -53,7 +53,7 @@ RM		= rm -f
 .c.o :
 		$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME): $(OBJS) $(HDR)
+$(NAME): $(OBJS) $(HDRS)
 		$(LINK) $(NAME) $(OBJS)
 
 all: $(NAME)
